@@ -1,9 +1,11 @@
 # csv-converter
 
+```
 yarn
 yarn dev
-
-ou
-
+```  
+ou  
+```
 npm i
 npm run dev
+```  
