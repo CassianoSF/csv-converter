@@ -11,17 +11,14 @@ class Converter {
   async convert() {
     const file = String(await fs.readFile(this.input))
     const [header, ...rows] = file.split('\r\r\n')
-    const convertedHeader = this.convertedHeader(header)
+    const convertedHeader = this.convertedHeader()
     const convertedRows = this.convertedRows(rows)
-    const newFile = `${convertedHeader}\r\r\n${convertedRows}`
+    const newFile = `${convertedHeader}${convertedRows}`
     return fs.writeFile(this.output, newFile)
   }
 
-  convertedHeader(header) {
-    return header
-      .replace('nome', 'name')
-      .replace('email', 'email')
-      .replace('data_aniversario', 'birthdate')
+  convertedHeader() {
+    return 'name,email,sexo,birthday\r\r\n'
   }
 
   convertedRows(rows) {
